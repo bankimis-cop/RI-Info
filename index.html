@@ -46,6 +46,12 @@
       <option value="helper">Helpers</option>
     </select>
   </label>
+  <label>
+    Profession:
+    <select id="professionFilter" onchange="filterTable()">
+      <option value="">All</option>
+    </select>
+  </label>
 </div>
 
 <table id="directoryTable">
@@ -285,16 +291,44 @@
 </table>
 
 <script>
-function filterTable() {
-  const category = document.getElementById("categoryFilter").value;
+function populateProfessions() {
+  const professionSet = new Set();
   const rows = document.querySelectorAll("#directoryTable tr");
 
   rows.forEach((row, index) => {
     if (index === 0) return;
-    const rowCategory = row.dataset.category;
-    row.style.display = (!category || rowCategory === category) ? "" : "none";
+    const profession = row.cells[1].innerText.trim();
+    professionSet.add(profession);
+  });
+
+  const professionFilter = document.getElementById("professionFilter");
+  [...professionSet].sort().forEach(profession => {
+    const option = document.createElement("option");
+    option.value = profession;
+    option.textContent = profession;
+    professionFilter.appendChild(option);
   });
 }
+
+function filterTable() {
+  const category = document.getElementById("categoryFilter").value;
+  const profession = document.getElementById("professionFilter").value;
+  const rows = document.querySelectorAll("#directoryTable tr");
+
+  rows.forEach((row, index) => {
+    if (index === 0) return;
+
+    const rowCategory = row.dataset.category;
+    const rowProfession = row.cells[1].innerText.trim();
+
+    const categoryMatch = !category || rowCategory === category;
+    const professionMatch = !profession || rowProfession === profession;
+
+    row.style.display = (categoryMatch && professionMatch) ? "" : "none";
+  });
+}
+
+populateProfessions();
 </script>
 
 </body>
