@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Service Directory</title>
+  <style>
+    body {
+      font-family: Arial;
+      padding: 20px;
+    }
+
+    .filters {
+      margin-bottom: 15px;
+    }
+
+    .filters select {
+      padding: 6px;
+      margin-right: 12px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background: #f4f4f4;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Rose Icon Contact Directory</h2>
+
+<div class="filters">
+  <label>
+    Category:
+    <select id="categoryFilter" onchange="filterTable()">
+      <option value="">All</option>
+      <option value="medical">Medical</option>
+      <option value="helper">Helpers</option>
+    </select>
+  </label>
+</div>
+
+<table id="directoryTable">
+  <tr>
+    <th>Name</th>
+    <th>Profession</th>
+    <th>Contact</th>
+    <th>Area</th>
+    <th>Info</th>
+  </tr>
+
+  <!-- DOCTORS -->
+  <tr data-category="medical">
+    <td>Dr. Amol Joshi</td>
+    <td>ENT</td>
+    <td>9545984289</td>
+    <td>Rose Icon-complex</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="medical">
+    <td>Dr. Dheeraj Mishra</td>
+    <td>ENT</td>
+    <td>9922442360</td>
+    <td>Vitalife Clinic-Pimple Saudagar</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="medical">
+    <td>Dr. Maske</td>
+    <td>Urology</td>
+    <td>9209240747</td>
+    <td>Reliance Digital(Rahatani)</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="medical">
+    <td>Dr Ganesh Jagdale</td>
+    <td>General Physician</td>
+    <td>8087082128</td>
+    <td>Samarath Hospital</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="medical">
+    <td>Dr Manisha</td>
+    <td>General Physician(not MBBS)</td>
+    <td>9607209205/9763434802</td>
+    <td>Near Govind Garden</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="medical">
+    <td>Birla Comprehensive Package</td>
+    <td>Medical check ups</td>
+    <td>9881123006</td>
+    <td>Dexascan</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="medical">
+    <td>Birla Comprehensive Package</td>
+    <td>Medical check ups</td>
+    <td>9881123006</td>
+    <td>Dexascan</td>
+    <td>Any</td>
+  </tr>
+
+Birla Comprehensive Package
+  <!-- HELPERS -->
+  <tr data-category="helper">
+    <td>Govind</td>
+    <td>Carpenter</td>
+    <td>9024704479</td>
+    <td>Any</td>
+    <td>Kitchen Trolley repair</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Vitthal Suthar</td>
+    <td>Carpenter</td>
+    <td>9423247910</td>
+    <td>Any</td>
+    <td>Any work</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Jeevan Praman-Anna Kamble</td>
+    <td>Life Certificate</td>
+    <td>8766980890</td>
+    <td>Any</td>
+    <td>Senior-Pension Living Certificate</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Yogesh</td>
+    <td>Postal Service</td>
+    <td>9270566335</td>
+    <td>Any</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Laxman</td>
+    <td>Postal Service</td>
+    <td>9011989564</td>
+    <td>Any</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Jagnnath</td>
+    <td>Postal Service</td>
+    <td>9579123565</td>
+    <td>Any</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Plumber-RoseIcon</td>
+    <td>Plumber</td>
+    <td>9970594168</td>
+    <td>Any</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Plumber Shyam</td>
+    <td>Plumber</td>
+    <td>7888288946</td>
+    <td>Any</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Kiran Carpenter</td>
+    <td>Carpenter</td>
+    <td>9850654848</td>
+    <td>Any</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Popular Packers Movers</td>
+    <td>Movers and Packers</td>
+    <td>902277671</td>
+    <td>Any</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>K K Movers And Packers</td>
+    <td>Movers and Packers</td>
+    <td>9130174605</td>
+    <td>Any</td>
+    <td>Any</td>
+  </tr>
+
+  <tr data-category="helper">
+    <td>Dipali Jadhav</td>
+    <td>Baby caretaker</td>
+    <td>9881815761</td>
+    <td>Any</td>
+    <td>Any</td>
+  </tr>
+</table>
+
+<script>
+function filterTable() {
+  const category = document.getElementById("categoryFilter").value;
+  const rows = document.querySelectorAll("#directoryTable tr");
+
+  rows.forEach((row, index) => {
+    if (index === 0) return;
+    const rowCategory = row.dataset.category;
+    row.style.display = (!category || rowCategory === category) ? "" : "none";
+  });
+}
+</script>
+
+</body>
+</html>
